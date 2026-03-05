@@ -1,5 +1,6 @@
 package 
 {
+	import flash.filesystem.File;
 	import massive.display.MassiveColorMode;
 	import massive.display.MassiveDisplay;
 	import massive.display.MassiveRenderMode;
@@ -111,16 +112,9 @@ package
 			
 			this.stage.color = 0x333333;
 			
-			var assets:Array = [];
-			for (var i:int = 0; i < this.numAtlases; i++)
-			{
-				assets[assets.length] = "assets/img/zombi" + i + ".png";
-				assets[assets.length] = "assets/img/zombi" + i + ".xml";
-			}
-			
 			assetManager = new AssetManager();
 			//assetManager.verbose = Capabilities.isDebugger;
-			assetManager.enqueue(assets);
+			assetManager.enqueue(File.applicationDirectory.resolvePath("assets/img"));
 			assetManager.loadQueue(assetsLoaded);
 		}
 		

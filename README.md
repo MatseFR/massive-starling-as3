@@ -1,0 +1,62 @@
+# Massive
+Massive is a high performance library for [Starling](https://github.com/openfl/starling), meant to render lots of quads (textured, animated) in a single `DisplayObject` very efficiently.
+
+It's heavily inspired by the [FFParticleSystem](https://github.com/shin10/Starling-FFParticleSystem) lib by Michael Trenkler, which I [ported](https://github.com/MatseFR/starling-extension-FFParticleSystem) to haxe some years ago.
+
+It's been tested on windows (haxelib version of hxcpp), html5 and air targets with the latest versions of OpenFL, Lime and Starling.
+
+## Demos
+[Benchmark](https://matse.skwatt.com/haxe/starling/massive/demo/) - compare Massive performance with classic Starling `Quad` and `MovieClip` ([README](https://github.com/MatseFR/massive-starling/tree/main/samples/demo))
+
+[Hex Grid](https://matse.skwatt.com/haxe/starling/massive/hexgrid/) - display only a part of an hexagon map, move around with infinite scroll and interact with it ([README](https://github.com/MatseFR/massive-starling/tree/main/samples/MassiveHexGrid))
+
+[Particle Editor](https://matse.skwatt.com/haxe/starling/massive/particles/editor/) - editor for Massive's `ParticleSystem` (WIP) ([README](https://github.com/MatseFR/massive-starling/tree/main/samples/particles/editor))
+
+## Getting started
+The AS3 version of Massive uses Domain Memory and inlining for best performance so it requires the AIR SDK : it won't work with Flex SDK
+
+## Quick setup
+Massive is meant to be as easy as possible to work with, startup Starling like you would normally do
+```haxe
+// first init Massive
+// you only have to do this once, and currently you don't need it if you don't use multitexturing
+// but later updates might rely on this for non-multitexturing stuff so it's safer to do it anyway
+MassiveDisplay.init();
+
+// create a Massive DisplayObject
+var massive:MassiveDisplay = new MassiveDisplay();
+// by default a MassiveDisplay instance will use the maximum buffer size, which is MassiveConstants.MAX_QUADS (16383)
+// if you know you're gonna use less than that you can set the buffer size for better performance
+massive.maxQuads = 5000; // display up to 5000 quads
+massive.texture = assetManager.getTextureAtlas("my-atlas").texture;
+addChild(massive);
+
+// we need a layer in order to display something
+var layer:ImageLayer = new ImageLayer();
+massive.addLayer(layer);
+
+// we need to create Frame instances to display Massive's equivalent of Image
+var textures = assetManager.getTextures("my-atlas-animation");
+var frames = Frame.fromTextureVectorWithAlign(textures, Align.CENTER, Align.CENTER); // the Frame class offers various helper functions
+// we also need timings to associate with those frames
+var timings = Animator.generateTimings(frames);
+
+// we're ready to display our animated "image"
+var img:ImageData = new ImageData();
+img.setFrames(frames, timings);
+img.x = 200;
+img.y = 100;
+layer.addImage(img);
+
+// note that we don't use multitexturing here : MassiveDisplay only has one texture
+// with multitexturing, unless we want our image to use the first texture we would
+// have to set the image's textureIndex
+```
+You can also look at the [samples](https://github.com/MatseFR/massive-starling/tree/main/samples) source code for starters
+
+## Frequently Asked Questions
+### Why is Massive so fast ?
+There are several reasons to this :
+- every object in a MassiveDisplay is batchable with the others, no need to check anything
+- Massive display objects are simple : they only have x y position, x y offset, x y scaling, rotation, red/green/blue/alpha and visible properties. Those are public and changing their values doesn't trigger any additionnal code like setting vertex data etc They also aren't touchable, can't have individual blend modes or filters
+- ByteArray is slow + on non-flash targets it needs to be copied before being sent to OpenGL. In Massive the ByteArray renderMode is only there to show that you shouldn't use ByteArray for that kind of stuff :)

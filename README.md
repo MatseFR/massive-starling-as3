@@ -14,6 +14,7 @@ It's been tested on windows (haxelib version of hxcpp), html5 and air targets wi
 
 ## Getting started
 The AS3 version of Massive uses Domain Memory and inlining for best performance so it requires the AIR SDK : it won't work with Flex SDK
+For best results make sure that inlining is enabled in your project
 
 ## Quick setup
 Massive is meant to be as easy as possible to work with, startup Starling like you would normally do

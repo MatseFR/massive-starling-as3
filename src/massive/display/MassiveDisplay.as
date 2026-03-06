@@ -1068,6 +1068,7 @@ package massive.display
 			{
 				this._program = createProgramWithMultiTexture(this._useColor, this._textures);
 				this._isMultiTexturingProgram = true;
+				this._multiTexturingConstants.length = 0;
 				
 				if (!_isBaseline)
 				{

@@ -559,6 +559,8 @@ package massive.display
 		{
 			super();
 			
+			if (!_initDone) init();
+			
 			if (_isBaseline)
 			{
 				this._multiTexturingConstants = _baselineMultiTextureIndices;
@@ -1068,10 +1070,11 @@ package massive.display
 			{
 				this._program = createProgramWithMultiTexture(this._useColor, this._textures);
 				this._isMultiTexturingProgram = true;
-				this._multiTexturingConstants.length = 0;
 				
 				if (!_isBaseline)
 				{
+					this._multiTexturingConstants.length = 0;
+					
 					//fc0
 					this._multiTexturingConstants[0] = 0.5;
 					this._multiTexturingConstants[1] = 1.5;
@@ -1146,7 +1149,7 @@ package massive.display
 				fragmentShader = RenderUtil.createAGALTexOperation("oc", "v0", 0, texture); // output color is texel color
 			}
 			
-			return Program.fromSource(vertexShader, fragmentShader, 2);
+			return Program.fromSource(vertexShader, fragmentShader, _isBaseline ? 1 : 2);
 		}
 		
 		protected function createProgramWithMultiTexture(useColor:Boolean, textures:Vector.<Texture>):Program
@@ -1508,7 +1511,7 @@ package massive.display
 			
 			if (this._multiTexturing)
 			{
-				context.setProgramConstantsFromVector(Context3DProgramType.FRAGMENT, 0, _multiTexturingConstants, -1);
+				context.setProgramConstantsFromVector(Context3DProgramType.FRAGMENT, 0, this._multiTexturingConstants, -1);
 			}
 			
 			var forceBuffer:Boolean = true;
@@ -1770,7 +1773,7 @@ package massive.display
 			
 			for (var i:int = 0; i < this._numQuads; i++)
 			{
-				for (var j:int = 0; j < this._numQuads; j++)
+				for (var j:int = 0; j < 4; j++)
 				{
 					tX = this._boundsData[++pos];
 					tY = this._boundsData[++pos];

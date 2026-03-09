@@ -323,7 +323,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						byteData.writeFloat(data.textureIndex);
+						byteData.writeFloat(data.textureIndexReal);
 					}
 					
 					byteData.writeFloat(x + cosRight + sinTop);
@@ -346,7 +346,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						byteData.writeFloat(data.textureIndex);
+						byteData.writeFloat(data.textureIndexReal);
 					}
 					
 					byteData.writeFloat(x - cosLeft - sinBottom);
@@ -369,7 +369,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						byteData.writeFloat(data.textureIndex);
+						byteData.writeFloat(data.textureIndexReal);
 					}
 					
 					byteData.writeFloat(x + cosRight - sinBottom);
@@ -392,7 +392,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						byteData.writeFloat(data.textureIndex);
+						byteData.writeFloat(data.textureIndexReal);
 					}
 				}
 				else
@@ -429,7 +429,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						byteData.writeFloat(data.textureIndex);
+						byteData.writeFloat(data.textureIndexReal);
 					}
 					
 					byteData.writeFloat(x + rightOffset);
@@ -452,7 +452,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						byteData.writeFloat(data.textureIndex);
+						byteData.writeFloat(data.textureIndexReal);
 					}
 					
 					byteData.writeFloat(x - leftOffset);
@@ -475,7 +475,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						byteData.writeFloat(data.textureIndex);
+						byteData.writeFloat(data.textureIndexReal);
 					}
 					
 					byteData.writeFloat(x + rightOffset);
@@ -498,7 +498,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						byteData.writeFloat(data.textureIndex);
+						byteData.writeFloat(data.textureIndexReal);
 					}
 				}
 			}
@@ -708,7 +708,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						sf32(data.textureIndex, position += 4);
+						sf32(data.textureIndexReal, position += 4);
 					}
 					
 					sf32(x + cosRight + sinTop, position += 4);
@@ -731,7 +731,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						sf32(data.textureIndex, position += 4);
+						sf32(data.textureIndexReal, position += 4);
 					}
 					
 					sf32(x - cosLeft - sinBottom, position += 4);
@@ -754,7 +754,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						sf32(data.textureIndex, position += 4);
+						sf32(data.textureIndexReal, position += 4);
 					}
 					
 					sf32(x + cosRight - sinBottom, position += 4);
@@ -777,7 +777,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						sf32(data.textureIndex, position += 4);
+						sf32(data.textureIndexReal, position += 4);
 					}
 				}
 				else
@@ -814,7 +814,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						sf32(data.textureIndex, position += 4);
+						sf32(data.textureIndexReal, position += 4);
 					}
 					
 					sf32(x + rightOffset, position += 4);
@@ -837,7 +837,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						sf32(data.textureIndex, position += 4);
+						sf32(data.textureIndexReal, position += 4);
 					}
 					
 					sf32(x - leftOffset, position += 4);
@@ -860,7 +860,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						sf32(data.textureIndex, position += 4);
+						sf32(data.textureIndexReal, position += 4);
 					}
 					
 					sf32(x + rightOffset, position += 4);
@@ -883,7 +883,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						sf32(data.textureIndex, position += 4);
+						sf32(data.textureIndexReal, position += 4);
 					}
 				}
 				position += 4;
@@ -1094,7 +1094,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						vectorData[++position] = data.textureIndex;
+						vectorData[++position] = data.textureIndexReal;
 					}
 					
 					vectorData[++position] = x + cosRight + sinTop;
@@ -1117,7 +1117,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						vectorData[++position] = data.textureIndex;
+						vectorData[++position] = data.textureIndexReal;
 					}
 					
 					vectorData[++position] = x - cosLeft - sinBottom;
@@ -1140,7 +1140,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						vectorData[++position] = data.textureIndex;
+						vectorData[++position] = data.textureIndexReal;
 					}
 					
 					vectorData[++position] = x + cosRight - sinBottom;
@@ -1163,7 +1163,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						vectorData[++position] = data.textureIndex;
+						vectorData[++position] = data.textureIndexReal;
 					}
 				}
 				else
@@ -1200,7 +1200,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						vectorData[++position] = data.textureIndex;
+						vectorData[++position] = data.textureIndexReal;
 					}
 					
 					vectorData[++position] = x + rightOffset;
@@ -1223,7 +1223,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						vectorData[++position] = data.textureIndex;
+						vectorData[++position] = data.textureIndexReal;
 					}
 					
 					vectorData[++position] = x - leftOffset;
@@ -1246,7 +1246,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						vectorData[++position] = data.textureIndex;
+						vectorData[++position] = data.textureIndexReal;
 					}
 					
 					vectorData[++position] = x + rightOffset;
@@ -1269,7 +1269,7 @@ package massive.display
 					}
 					if (multiTexturing)
 					{
-						vectorData[++position] = data.textureIndex;
+						vectorData[++position] = data.textureIndexReal;
 					}
 				}
 				position++;

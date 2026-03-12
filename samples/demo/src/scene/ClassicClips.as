@@ -4,12 +4,9 @@ package scene
 	import massive.utils.MathUtils;
 	import starling.animation.IAnimatable;
 	import starling.core.Starling;
-	import starling.display.Mesh;
 	import starling.display.Sprite3D;
 	import starling.events.Event;
 	import starling.filters.BlurFilter;
-	import starling.styles.MeshStyle;
-	import starling.styles.MultiTextureStyle;
 	import starling.textures.Texture;
 	import starling.utils.Color;
 	/**
@@ -51,16 +48,6 @@ package scene
 			var stageHeight:Number = this.stage.stageHeight;
 			
 			updateBounds();
-			
-			if (this.multiTextureStyle)
-			{
-				MultiTextureStyle.maxTextures = numTextures;
-				Mesh.defaultStyle = MultiTextureStyle;
-			}
-			else
-			{
-				Mesh.defaultStyle = MeshStyle;
-			}
 			
 			if (this.useSprite3D)
 			{

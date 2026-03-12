@@ -6,6 +6,8 @@ package
 	import flash.display3D.Context3DRenderMode;
 	import flash.events.Event;
 	import starling.core.Starling;
+	import starling.display.Mesh;
+	import starling.styles.MultiTextureStyle;
 	
 	/**
 	 * ...
@@ -31,6 +33,8 @@ package
 		private function start():void
 		{
 			this.stage.scaleMode = StageScaleMode.NO_SCALE;
+			
+			Mesh.defaultStyle = MultiTextureStyle;
 			
 			this._starling = new Starling(MassiveDemo, this.stage, null, null, Context3DRenderMode.AUTO, "auto");
 			//this._starling = new Starling(MassiveDemo, this.stage, null, null, Context3DRenderMode.AUTO, Context3DProfile.BASELINE); // use this to force baseline profile
